@@ -44,7 +44,6 @@ io.on('connection', (socket) => {
       message: txt
     }
 
-    // socket.emit('show-msg', obj);
     socket.broadcast.emit('show-msg', obj);
   })
 
