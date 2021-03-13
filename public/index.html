@@ -3,34 +3,38 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+
+
+
   <title>Chat</title>
 </head>
 
 <body>
-
-  <div class="page" id="loginPage">
-    <h1>Nome do usuario</h1>
-    <span>Digite seu nome e pressione enter para entrar no chat.</span>
-    <input type="text" id="loginNameInput" />
+  <div class="page" id="login">
+    <h1>Chat - Socket IO</h1>
+    <span>Digite um nome de usuário e pressione ENTER para entrar no chat.</span>
+    <input type="text" id="inputName" placeholder="digite aqui..." />
   </div>
 
 
   <div class="page" id="chatPage">
-    <div class="chatArea">
-      <ul class="chatList" />
-      <ul class="userList" />
+    <div class="chat">
+      <ul class="right"></ul>
+      <div>
+        <p style=" margin-left: 5px; margin-top: 10px; color: #aaa; font-size: 15px;">Usuarios online</p>
+        <ul class="userList">
+        </ul>
+      </div>
     </div>
 
     <div class="chatInput">
-      <input type="text" id="chatTextInput" placeholder="Digite uma mensagem (e aperte ENTER)">
+      <input type="text" id="chatTextInput" placeholder="Digite uma mensagem e pressione ENTER.">
     </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="./main.js"></script>
-
 </body>
 
 </html>
