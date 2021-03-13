@@ -11,31 +11,30 @@ const io = socketIO(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-let connectedUsers = [];
+let onlineUsers = [];
 
-//listener
 io.on('connection', (socket) => {
   console.log('Conexão detectada...');
 
   socket.on('join-request', username => {
     socket.username = username;
-    connectedUsers.push(username);
-    console.log(connectedUsers);
+    onlineUsers.push(username);
+    console.log(onlineUsers);
 
-    socket.emit('user-ok', connectedUsers);
+    socket.emit('user-ok', onlineUsers);
 
     socket.broadcast.emit('list-update', {
       joined: username,
-      list: connectedUsers
+      list: onlineUsers
     });
   });
 
   socket.on('disconnect', () => {
-    connectedUsers = connectedUsers.filter(item => item !== socket.username);
+    onlineUsers = onlineUsers.filter(item => item !== socket.username);
 
     socket.broadcast.emit('list-update', {
       left: socket.username,
-      list: connectedUsers
+      list: onlineUsers
     });
   })
 
